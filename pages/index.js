@@ -82,7 +82,7 @@ export default function Home() {
     <div className="flex flex-col h-screen">
       <Header className="sticky top-0" />
       <NavBar className="sticky top-0" />
-      <div className="flex-1 overflow-auto scrollbar-hide">
+      <div className="flex-1 overflow-auto">
         <TestList testList={DUMMY_TEST} />
       </div>
     </div>

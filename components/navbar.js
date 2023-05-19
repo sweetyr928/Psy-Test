@@ -6,12 +6,12 @@ export default function NavBar() {
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex justify-around">
           {category.map((el, idx) => (
-            <div
+            <button
               className="text-purple-300 hover:text-purple-400 px-3 py-2 rounded-md font-medium"
               key={idx}
             >
               {el}
-            </div>
+            </button>
           ))}
         </div>
       </div>
