@@ -79,10 +79,12 @@ const DUMMY_TEST = [
 
 export default function Home() {
   return (
-    <div className="overflow-y-auto scrollbar-hide">
-      <Header />
-      <NavBar />
-      <TestList testList={DUMMY_TEST} />
+    <div className="flex flex-col h-screen">
+      <Header className="sticky top-0" />
+      <NavBar className="sticky top-0" />
+      <div className="flex-1 overflow-auto scrollbar-hide">
+        <TestList testList={DUMMY_TEST} />
+      </div>
     </div>
   );
 }
