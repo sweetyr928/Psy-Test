@@ -5,7 +5,8 @@ import TestList from "../components/test/testList";
 const DUMMY_TEST = [
   {
     id: 1,
-    title: "깊은 숲 속에 성을 발견했다. 들어갈까 말까?",
+    title:
+      "깊은 숲 속에 성을 발견했다. 들어갈까 말까? 깊은 숲 속에 성을 발견했다. 들어갈까 말까?  깊은 숲 속에 성을 발견했다. 들어갈까 말까? ",
     image:
       "https://a.cdn-hotels.com/gdcs/production143/d584/9d0b3a81-4f8a-4f26-8aad-9c165dff75fa.jpg",
     option: ["들어간다", "들어가지 않는다"],
