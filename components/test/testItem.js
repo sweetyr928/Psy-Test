@@ -1,6 +1,12 @@
 import Image from "next/image";
+import Router, { useRouter } from "next/router";
 
 export default function TestItem({ id, image, title }) {
+  const router = useRouter();
+  const handleShowDetails = () => {
+    router.push(`/${id}`);
+  };
+
   return (
     <div className="col-span-6 md:col-span-4 lg:col-span-3 w-full bg-purple-200">
       <div className="aspect-w-2 aspect-h-1">
@@ -17,7 +23,10 @@ export default function TestItem({ id, image, title }) {
           {title}
         </div>
         <div className="flex justify-center">
-          <button className="bg-purple-400 text-white px-4 py-2 rounded-full">
+          <button
+            className="bg-purple-400 text-white px-4 py-2 rounded-full"
+            onClick={handleShowDetails}
+          >
             테스트 하러가기
           </button>
         </div>

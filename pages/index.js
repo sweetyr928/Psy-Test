@@ -1,5 +1,6 @@
-import Header from "../components/header";
-import NavBar from "../components/navbar";
+import Layout from "../components/layout/Layout";
+import Header from "../components/layout/header";
+import NavBar from "../components/layout/navbar";
 import TestList from "../components/test/testList";
 
 const DUMMY_TEST = [
@@ -80,12 +81,8 @@ const DUMMY_TEST = [
 
 export default function Home() {
   return (
-    <div className="flex flex-col h-screen">
-      <Header className="sticky top-0" />
-      <NavBar className="sticky top-0" />
-      <div className="flex-1 overflow-auto">
-        <TestList testList={DUMMY_TEST} />
-      </div>
-    </div>
+    <Layout>
+      <TestList testList={DUMMY_TEST} />
+    </Layout>
   );
 }
