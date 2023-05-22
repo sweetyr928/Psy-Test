@@ -2,6 +2,8 @@ import Image from "next/image";
 import Layout from "../../components/layout/Layout";
 import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
+import ShareIcon from "@mui/icons-material/Share";
+import ReplayIcon from "@mui/icons-material/Replay";
 
 export default function TestDetails() {
   const detail =
@@ -10,7 +12,6 @@ export default function TestDetails() {
   const answer = ["당신은 용감한 사람!", "당신은 겁이 많은 사람!"];
   const [isClicked, setIsClicked] = useState(false);
   const [result, setResult] = useState(0);
-  const [showAlert, setShowAlert] = useState(false);
 
   const handleShowResult = (idx) => {
     setResult(idx);
@@ -93,16 +94,16 @@ export default function TestDetails() {
             </div>
             <div className="flex items-center justify-center">
               <button
-                className="bg-purple-300 text-white px-4 py-2 rounded-full mb-4 w-full mr-1"
+                className="bg-purple-300 text-white px-4 py-2 rounded-full mb-4 w-full mr-2"
                 onClick={handleCopyURL}
               >
-                공유하기
+                <ShareIcon />
               </button>
               <button
                 className="bg-purple-300 text-white px-4 py-2 rounded-full mb-4 w-full"
                 onClick={handleRetest}
               >
-                다시하기
+                <ReplayIcon />
               </button>
             </div>
           </div>
