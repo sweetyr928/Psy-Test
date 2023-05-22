@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Layout from "../../components/layout/Layout";
 import { useEffect, useState } from "react";
+import Swal from "sweetalert2";
 
 export default function TestDetails() {
   const detail =
@@ -9,6 +10,7 @@ export default function TestDetails() {
   const answer = ["당신은 용감한 사람!", "당신은 겁이 많은 사람!"];
   const [isClicked, setIsClicked] = useState(false);
   const [result, setResult] = useState(0);
+  const [showAlert, setShowAlert] = useState(false);
 
   const handleShowResult = (idx) => {
     setResult(idx);
@@ -17,6 +19,38 @@ export default function TestDetails() {
 
   const handleRetest = () => {
     setIsClicked(!isClicked);
+  };
+
+  const Toast = Swal.mixin({
+    toast: true,
+    position: "top",
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: true,
+    didOpen: (toast) => {
+      toast.addEventListener("mouseenter", Swal.stopTimer);
+      toast.addEventListener("mouseleave", Swal.resumeTimer);
+    },
+  });
+
+  const handleCopyURL = () => {
+    const currentURL = window.location.href;
+    navigator.clipboard
+      .writeText(currentURL)
+      .then(() => {
+        Toast.fire({
+          icon: "success",
+          title: "URL이 클립보드에 복사되었습니다!",
+        });
+        console.log("URL copied to clipboard:", currentURL);
+      })
+      .catch((error) => {
+        Toast.fire({
+          icon: "fail",
+          title: "URL 복사를 실패하였습니다!",
+        });
+        console.error("Failed to copy URL:", error);
+      });
   };
 
   useEffect(() => {
@@ -58,7 +92,10 @@ export default function TestDetails() {
               {answer[result]}
             </div>
             <div className="flex items-center justify-center">
-              <button className="bg-purple-300 text-white px-4 py-2 rounded-full mb-4 w-full mr-1">
+              <button
+                className="bg-purple-300 text-white px-4 py-2 rounded-full mb-4 w-full mr-1"
+                onClick={handleCopyURL}
+              >
                 공유하기
               </button>
               <button
