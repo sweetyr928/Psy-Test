@@ -1,5 +1,10 @@
+import { useEffect, useState } from "react";
 import Layout from "../components/layout/Layout";
 import TestList from "../components/test/testList";
+// 파이어베이서 파일에서 import 해온 db
+import { db } from "../firebaseConfig";
+// db에 접근해서 데이터를 꺼내게 도와줄 친구들
+import { collection, getDocs } from "firebase/firestore";
 
 const DUMMY_TEST = [
   {
@@ -96,9 +101,23 @@ const DUMMY_TEST = [
 ];
 
 export default function Home() {
+  const [list, setList] = useState([]);
+  const listsCollectionRef = collection(db, "testList");
+
+  useEffect(() => {
+    // 비동기로 데이터 받을준비
+    const getLists = async () => {
+      // getDocs로 컬렉션안에 데이터 가져오기
+      const data = await getDocs(listsCollectionRef);
+      setList(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+    };
+
+    getLists();
+  }, []);
+
   return (
     <Layout>
-      <TestList testList={DUMMY_TEST} />
+      <TestList testList={list} />
     </Layout>
   );
 }
