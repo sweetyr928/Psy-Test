@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import ShareIcon from "@mui/icons-material/Share";
 import ReplayIcon from "@mui/icons-material/Replay";
+import { db } from "../firebaseConfig";
+import { collection, getDocs } from "firebase/firestore";
 
 export default function TestDetails() {
   const detail =
