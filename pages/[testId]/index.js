@@ -4,14 +4,10 @@ import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import ShareIcon from "@mui/icons-material/Share";
 import ReplayIcon from "@mui/icons-material/Replay";
-import { db } from "../firebaseConfig";
-import { collection, getDocs } from "firebase/firestore";
+import { db } from "../../firebaseConfig";
+import { collection, doc, getDocs, getDoc } from "firebase/firestore";
 
-export default function TestDetails() {
-  const detail =
-    "어느날 꿈에서 깨어난 당신. 눈을 떠보니 숲 속에 혼자 있었다. 정신을 차리고보니 저 멀리에 크고 오래된 성이 보인다. 가까이 가보니 꽤 낡고 허름해 보이는데... 왠지 들어가보고 싶다.";
-  const option = ["들어간다", "들어가지 않는다"];
-  const answer = ["당신은 용감한 사람!", "당신은 겁이 많은 사람!"];
+export default function TestDetails({ test }) {
   const [isClicked, setIsClicked] = useState(false);
   const [result, setResult] = useState(0);
 
@@ -56,29 +52,29 @@ export default function TestDetails() {
       });
   };
 
-  useEffect(() => {
-    console.log(isClicked);
-  }, [isClicked]);
+  useEffect(() => {}, [isClicked]);
 
   return (
     <Layout>
       <div className="flex flex-col items-center justify-center my-12">
-        <div className="mb-6">
+        <div className="mb-6 relative">
           <Image
-            src="https://a.cdn-hotels.com/gdcs/production143/d584/9d0b3a81-4f8a-4f26-8aad-9c165dff75fa.jpg"
-            alt="깊은 숲 속에 성을 발견했다. 들어갈까 말까?"
+            src={test.image}
+            alt={test.title}
             width={500}
             height={350}
+            style={{ width: 500, height: 350 }}
             className="object-cover"
+            priority={true}
           />
         </div>
         {!isClicked ? (
           <div className="flex flex-col items-center justify-center">
             <div className="text-xl font-bold text-gray-400 mb-6 text-center text-ellipsis tracking-wider w-1/2 ">
-              {detail}
+              {test.detail}
             </div>
             <div className="flex flex-col items-center justify-center">
-              {option.map((el, idx) => (
+              {test.option.map((el, idx) => (
                 <button
                   key={idx}
                   className="bg-purple-300 text-white px-4 py-2 rounded-full mb-4 w-full"
@@ -92,7 +88,7 @@ export default function TestDetails() {
         ) : (
           <div className="flex flex-col items-center justify-center">
             <div className="text-2xl font-bold text-gray-400 mb-4 text-center">
-              {answer[result]}
+              {test.answer[result]}
             </div>
             <div className="flex items-center justify-center">
               <button
@@ -113,4 +109,28 @@ export default function TestDetails() {
       </div>
     </Layout>
   );
+}
+
+export async function getStaticPaths() {
+  const listsCollectionRef = collection(db, "testList");
+  const data = await getDocs(listsCollectionRef);
+  return {
+    fallback: true,
+    paths: data.docs.map((doc) => ({
+      params: { testId: doc.id },
+    })),
+  };
+}
+
+export async function getStaticProps(context) {
+  const testId = context.params.testId;
+  const docRef = doc(db, "testList", testId);
+  const dataSnapshot = await getDoc(docRef);
+  const testDetail = dataSnapshot.data();
+
+  return {
+    props: {
+      test: testDetail,
+    },
+  };
 }

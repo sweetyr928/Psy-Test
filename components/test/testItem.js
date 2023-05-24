@@ -16,6 +16,7 @@ export default function TestItem({ id, image, title }) {
           width={400}
           height={200}
           className="object-cover"
+          priority={true}
         />
       </div>
       <div className="p-3 flex flex-col justify-between h-32">
