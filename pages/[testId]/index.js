@@ -1,3 +1,4 @@
+/** @jsxImportSource @emotion/react */
 import Image from "next/image";
 import Layout from "../../components/layout/layout";
 import { useEffect, useState } from "react";
@@ -6,10 +7,21 @@ import ShareIcon from "@mui/icons-material/Share";
 import ReplayIcon from "@mui/icons-material/Replay";
 import { db } from "../../firebaseConfig";
 import { collection, doc, getDocs, getDoc } from "firebase/firestore";
+import { useRouter } from "next/router";
 
 export default function TestDetails({ test }) {
   const [isClicked, setIsClicked] = useState(false);
   const [result, setResult] = useState(0);
+  const [reset, setReset] = useState(false);
+
+  const router = useRouter();
+
+  useEffect(() => {
+    if (reset) {
+      router.push(`/`);
+      setReset(false);
+    }
+  }, [reset]);
 
   const handleShowResult = (idx) => {
     setResult(idx);
@@ -55,7 +67,7 @@ export default function TestDetails({ test }) {
   useEffect(() => {}, [isClicked]);
 
   return (
-    <Layout>
+    <Layout handleReset={setReset}>
       <div className="flex flex-col items-center justify-center my-28">
         <div className="mb-6 relative">
           <Image
