@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Layout from "../../components/layout/Layout";
+import Layout from "../../components/layout/layout";
 import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import ShareIcon from "@mui/icons-material/Share";
@@ -56,7 +56,7 @@ export default function TestDetails({ test }) {
 
   return (
     <Layout>
-      <div className="flex flex-col items-center justify-center my-12">
+      <div className="flex flex-col items-center justify-center my-28">
         <div className="mb-6 relative">
           <Image
             src={test.image}
