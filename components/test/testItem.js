@@ -8,7 +8,11 @@ export default function TestItem({ id, image, title }) {
   };
 
   return (
-    <div className="col-span-6 md:col-span-4 lg:col-span-3 w-full bg-purple-200">
+    <div
+      className="col-span-6 md:col-span-4 lg:col-span-3 w-full bg-purple-200 cursor-pointer transition duration-200
+      ease-in transform sm:hover:scale-105 hover:z-50"
+      onClick={handleShowDetails}
+    >
       <div className="aspect-w-3 aspect-h-2">
         <div
           style={{
@@ -26,10 +30,7 @@ export default function TestItem({ id, image, title }) {
           {title}
         </div>
         <div className="flex justify-center">
-          <button
-            className="bg-purple-300 text-white px-4 py-2 rounded-full"
-            onClick={handleShowDetails}
-          >
+          <button className="bg-purple-300 text-white px-4 py-2 rounded-full">
             테스트 하러가기
           </button>
         </div>
