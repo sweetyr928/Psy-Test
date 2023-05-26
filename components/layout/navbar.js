@@ -1,5 +1,5 @@
 export default function NavBar({ changeCategory, handleClick }) {
-  const category = ["연애", "성향", "이상형", "우정", "가치관", "직업"];
+  const category = ["연애", "이상형", "우정", "가치관", "직업"];
   const handleCategory = (idx) => {
     changeCategory(category[idx]);
     handleClick(true);
