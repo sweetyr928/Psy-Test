@@ -22,7 +22,13 @@ export default function TestItem({ id, image, title }) {
             paddingTop: "66.67%",
           }}
         >
-          <Image src={image} alt={title} layout="fill" objectFit="cover" />
+          <Image
+            src={image}
+            alt={title}
+            layout="fill"
+            objectFit="cover"
+            sizes="(min-width: 640px) 50vw, 100vw"
+          />
         </div>
       </div>
       <div className="p-3 flex flex-col justify-between h-32">
