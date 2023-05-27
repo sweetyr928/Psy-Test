@@ -9,25 +9,25 @@ export default function TestItem({ id, image, title }) {
 
   return (
     <div
-      className="col-span-6 md:col-span-4 lg:col-span-3 w-full bg-purple-200 cursor-pointer transition duration-200
-      ease-in transform sm:hover:scale-105 hover:z-50"
+      className="col-span-6 md:col-span-4 lg:col-span-3 w-full bg-purple-200 cursor-pointer transition duration-200 ease-in transform sm:hover:scale-105 hover:z-50"
       onClick={handleShowDetails}
     >
-      <div className="aspect-w-3 aspect-h-2">
+      <div
+        className="aspect-w-3 aspect-h-2"
+        style={{ position: "relative", width: "100%", paddingBottom: "66.67%" }}
+      >
         <div
-          style={{
-            position: "relative",
-            width: "100%",
-            height: "0",
-            paddingTop: "66.67%",
-          }}
+          className="absolute inset-0"
+          style={{ width: "100%", height: "100%" }}
         >
           <Image
             src={image}
             alt={title}
-            layout="fill"
-            objectFit="cover"
-            sizes="(min-width: 640px) 50vw, 100vw"
+            width={400}
+            height={300}
+            className="object-cover"
+            style={{ width: "100%", height: "100%" }}
+            priority={true}
           />
         </div>
       </div>
