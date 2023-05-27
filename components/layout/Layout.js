@@ -1,5 +1,6 @@
 import Header from "./header";
 import Head from "next/head";
+import NavBar from "./navbar";
 
 export default function Layout(props) {
   return (
@@ -10,6 +11,11 @@ export default function Layout(props) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header className="sticky top-0" handleReset={props.handleReset} />
+      <NavBar
+        className="sticky top-0"
+        changeCategory={props.changeCategory}
+        handleClick={props.handleClick}
+      />
       <div className="flex-1 overflow-auto">{props.children}</div>
     </div>
   );

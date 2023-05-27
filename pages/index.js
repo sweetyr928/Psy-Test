@@ -26,12 +26,11 @@ export default function Home({ lists }) {
   }, [reset]);
 
   return (
-    <Layout handleReset={setReset}>
-      <NavBar
-        className="sticky top-0"
-        changeCategory={setCategory}
-        handleClick={setIsClicked}
-      />
+    <Layout
+      handleReset={setReset}
+      changeCategory={setCategory}
+      handleClick={setIsClicked}
+    >
       {testList.length ? (
         <TestList testList={testList} />
       ) : (
