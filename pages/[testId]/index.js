@@ -67,7 +67,7 @@ export default function TestDetails({ test }) {
 
   return (
     <Layout handleReset={setReset}>
-      <div className="flex flex-col items-center justify-center my-24">
+      <div className="flex flex-col items-center justify-center mt-24">
         <div className="mb-6 relative">
           <Image
             src={test.image}
@@ -81,7 +81,7 @@ export default function TestDetails({ test }) {
         </div>
         {!isClicked ? (
           <div className="flex flex-col items-center justify-center">
-            <div className="text-xl font-bold text-gray-400 mb-6 text-left text-ellipsis tracking-wider w-1/2 ">
+            <div className="text-xl font-bold text-gray-400 mb-6 text-left text-ellipsis tracking-wider w-2/3">
               {test.detail}
             </div>
             <div className="flex flex-col items-center justify-center">
