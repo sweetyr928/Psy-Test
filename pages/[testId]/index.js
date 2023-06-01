@@ -67,21 +67,21 @@ export default function TestDetails({ test }) {
 
   return (
     <Layout handleReset={setReset}>
-      <div className="flex flex-col items-center justify-center mt-8 sm:mt-12 md:mt-16">
+      <div className="flex flex-col items-center justify-center sm:mt-2 md:mt-4">
         <div className="mb-6 relative">
           <Image
             src={test.image}
             alt={test.title}
-            width={500}
-            height={350}
-            style={{ width: 500, height: 350 }}
+            width={700}
+            height={400}
+            style={{ width: 700, height: 400 }}
             className="object-cover"
             priority={true}
           />
         </div>
         {!isClicked ? (
           <div className="flex flex-col items-center justify-center">
-            <div className="text-xl font-bold text-gray-400 mb-4 text-left text-ellipsis tracking-wider w-9/12">
+            <div className="text-xl font-bold text-gray-400 mb-6 text-left max-w-[900px]">
               {test.detail}
             </div>
             <div className="flex flex-col items-center justify-center">
@@ -98,7 +98,10 @@ export default function TestDetails({ test }) {
           </div>
         ) : (
           <div className="flex flex-col items-center justify-center">
-            <div className="text-xl font-bold text-gray-400 mb-4 text-left text-ellipsis tracking-wider w-9/12">
+            <div className="text-2xl font-bold text-gray-500 mb-4">
+              테스트 결과
+            </div>
+            <div className="text-xl font-bold text-gray-400 mb-4 text-left max-w-[900px]">
               {test.answer[result]}
             </div>
             <div className="flex items-center justify-center">
