@@ -10,6 +10,7 @@ export default function TestList({ testList }) {
             id={test.id}
             image={test.image}
             title={test.title}
+            views={test.views}
           />
         ))}
       </div>

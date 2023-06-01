@@ -1,16 +1,24 @@
 import Image from "next/image";
 import { useRouter } from "next/router";
+import { db } from "../../firebaseConfig";
+import { doc, updateDoc } from "firebase/firestore";
 
-export default function TestItem({ id, image, title }) {
+export default function TestItem({ id, image, title, views }) {
   const router = useRouter();
   const handleShowDetails = () => {
     router.push(`/${id}`);
+  };
+  const updateViews = async (id) => {
+    const testsDoc = doc(db, "testList", id);
+    const newField = { views: views + 1 };
+    await updateDoc(testsDoc, newField);
+    handleShowDetails();
   };
 
   return (
     <div
       className="col-span-6 md:col-span-4 lg:col-span-3 w-full bg-purple-200 cursor-pointer transition duration-200 ease-in transform sm:hover:scale-105 hover:z-50"
-      onClick={handleShowDetails}
+      onClick={() => updateViews(id)}
     >
       <div
         className="aspect-w-3 aspect-h-2"
