@@ -1,6 +1,5 @@
-import Layout from "../components/layout/layout";
+import Layout from "../components/layout/Layout";
 import TestList from "../components/test/testList";
-import NavBar from "../components/layout/navbar";
 import { db } from "../firebaseConfig";
 import { collection, getDocs } from "firebase/firestore";
 import { useState, useEffect } from "react";
