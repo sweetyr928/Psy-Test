@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Layout from "../../components/layout/layout";
+import Layout from "../../components/layout/Layout";
 import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import ShareIcon from "@mui/icons-material/Share";
