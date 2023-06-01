@@ -10,7 +10,6 @@ export default function Home({ lists, topLists }) {
   const [isClicked, setIsClicked] = useState(false);
   const [reset, setReset] = useState(false);
   const [testList, setTestList] = useState(lists);
-  console.log(topLists);
 
   useEffect(() => {
     if (isClicked) {
