@@ -17,7 +17,8 @@ export default function TestItem({ id, image, title, views }) {
 
   return (
     <div
-      className="col-span-6 md:col-span-4 lg:col-span-3 w-full bg-purple-200 cursor-pointer transition duration-200 ease-in transform sm:hover:scale-105 hover:z-50"
+      className="col-span-6 md:col-span-4 lg:col-span-3 w-full bg-purple-200 cursor-pointer transition duration-200 
+      ease-in transform sm:hover:scale-105 hover:z-50"
       onClick={() => updateViews(id)}
     >
       <div

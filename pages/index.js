@@ -3,12 +3,14 @@ import TestList from "../components/test/testList";
 import { db } from "../firebaseConfig";
 import { collection, getDocs } from "firebase/firestore";
 import { useState, useEffect } from "react";
+import TopList from "../components/test/topList";
 
-export default function Home({ lists }) {
+export default function Home({ lists, topLists }) {
   const [category, setCategory] = useState("");
   const [isClicked, setIsClicked] = useState(false);
   const [reset, setReset] = useState(false);
   const [testList, setTestList] = useState(lists);
+  console.log(topLists);
 
   useEffect(() => {
     if (isClicked) {
@@ -21,6 +23,7 @@ export default function Home({ lists }) {
     if (reset) {
       setTestList(lists);
       setReset(false);
+      setCategory("");
     }
   }, [reset]);
 
@@ -30,6 +33,7 @@ export default function Home({ lists }) {
       changeCategory={setCategory}
       handleClick={setIsClicked}
     >
+      {!category.length ? <TopList topLists={topLists} /> : null}
       {testList.length ? (
         <TestList testList={testList} />
       ) : (
@@ -46,13 +50,19 @@ export default function Home({ lists }) {
 export async function getStaticProps() {
   const listsCollectionRef = collection(db, "testList");
   const data = await getDocs(listsCollectionRef);
-  const testArr = data.docs
+  const lists = data.docs
     .map((doc) => ({ ...doc.data(), id: doc.id }))
     .sort((a, b) => b.id - a.id);
+  const topLists = data.docs
+    .map((doc) => ({ ...doc.data(), id: doc.id }))
+    .sort((a, b) => b.id - a.id)
+    .sort((a, b) => b.views - a.views)
+    .slice(0, 3);
 
   return {
     props: {
-      lists: testArr,
+      lists,
+      topLists,
     },
   };
 }
