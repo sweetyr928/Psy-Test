@@ -46,7 +46,9 @@ export default function Home({ lists }) {
 export async function getStaticProps() {
   const listsCollectionRef = collection(db, "testList");
   const data = await getDocs(listsCollectionRef);
-  const testArr = data.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
+  const testArr = data.docs
+    .map((doc) => ({ ...doc.data(), id: doc.id }))
+    .sort((a, b) => b.id - a.id);
 
   return {
     props: {
