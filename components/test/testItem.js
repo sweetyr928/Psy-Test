@@ -2,18 +2,22 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import { db } from "../../firebaseConfig";
 import { doc, updateDoc } from "firebase/firestore";
+import { useCallback } from "react";
 
 export default function TestItem({ id, image, title, views }) {
   const router = useRouter();
   const handleShowDetails = () => {
     router.push(`/${id}`);
   };
-  const updateViews = async (id) => {
-    const testsDoc = doc(db, "testList", id);
-    const newField = { views: views + 1 };
-    await updateDoc(testsDoc, newField);
-    handleShowDetails();
-  };
+  const updateViews = useCallback(
+    async (id) => {
+      const testsDoc = doc(db, "testList", id);
+      const newField = { views: views + 1 };
+      await updateDoc(testsDoc, newField);
+      handleShowDetails();
+    },
+    [id]
+  );
 
   return (
     <div
