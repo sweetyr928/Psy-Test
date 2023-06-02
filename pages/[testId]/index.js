@@ -52,14 +52,12 @@ export default function TestDetails({ test }) {
           icon: "success",
           title: "URL이 클립보드에 복사되었습니다!",
         });
-        console.log("URL copied to clipboard:", currentURL);
       })
       .catch((error) => {
         Toast.fire({
           icon: "fail",
           title: "URL 복사를 실패하였습니다!",
         });
-        console.error("Failed to copy URL:", error);
       });
   };
 
