@@ -86,7 +86,7 @@ export default function TestDetails({ test }) {
               {test.option.map((el, idx) => (
                 <button
                   key={idx}
-                  className="bg-purple-300 text-white px-4 py-2 rounded-full mb-4 w-full"
+                  className="bg-purple-300 text-white px-4 py-2 rounded-full mb-4 w-full hover:bg-purple-400"
                   onClick={() => handleShowResult(idx)}
                 >
                   {el}
@@ -104,13 +104,13 @@ export default function TestDetails({ test }) {
             </div>
             <div className="flex items-center justify-center">
               <button
-                className="bg-purple-300 text-white px-4 py-2 rounded-full mb-4 w-full mr-2"
+                className="bg-purple-300 text-white px-4 py-2 rounded-full mb-4 w-full mr-2 hover:bg-purple-400"
                 onClick={handleCopyURL}
               >
                 <ShareIcon />
               </button>
               <button
-                className="bg-purple-300 text-white px-4 py-2 rounded-full mb-4 w-full"
+                className="bg-purple-300 text-white px-4 py-2 rounded-full mb-4 w-full hover:bg-purple-400"
                 onClick={handleRetest}
               >
                 <ReplayIcon />
