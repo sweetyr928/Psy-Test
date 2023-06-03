@@ -7,10 +7,10 @@ export default function Header({ handleReset }) {
 
   return (
     <div
-      className="bg-purple-300 h-24 w-screen flex justify-center items-center cursor-pointer"
-      onClick={handleClick}
+      className="h-24 w-screen flex justify-center items-center cursor-pointer 
+    bg-gradient-to-r from-purple-300 via-purple-400 to-purple-300"
     >
-      <div className="font-semibold text-4xl text-gray-50 cursor-pointer">
+      <div className="font-semibold text-4xl text-white cursor-pointer">
         오늘은 무슨 심리테스트를 해볼까?
       </div>
     </div>
