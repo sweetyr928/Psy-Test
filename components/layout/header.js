@@ -9,6 +9,7 @@ export default function Header({ handleReset }) {
     <div
       className="h-24 w-screen flex justify-center items-center cursor-pointer 
     bg-gradient-to-r from-purple-300 via-purple-400 to-purple-300"
+      onClick={handleClick}
     >
       <div className="font-semibold text-4xl text-white cursor-pointer">
         오늘은 무슨 심리테스트를 해볼까?

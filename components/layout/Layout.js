@@ -11,11 +11,7 @@ export default function Layout(props) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header className="sticky top-0" handleReset={props.handleReset} />
-      <NavBar
-        className="sticky top-0"
-        changeCategory={props.changeCategory}
-        handleClick={props.handleClick}
-      />
+      <NavBar className="sticky top-0" handleCategory={props.handleCategory} />
       <div className="flex-1 overflow-auto">{props.children}</div>
     </div>
   );

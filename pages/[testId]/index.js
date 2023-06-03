@@ -9,8 +9,8 @@ import { collection, doc, getDocs, getDoc } from "firebase/firestore";
 import { useRouter } from "next/router";
 
 export default function TestDetails({ test }) {
-  const [isClicked, setIsClicked] = useState(false);
-  const [result, setResult] = useState(0);
+  const [showDetail, setShowDetail] = useState(false);
+  const [resultIdx, setResultIdx] = useState(0);
   const [reset, setReset] = useState(false);
 
   const router = useRouter();
@@ -22,17 +22,17 @@ export default function TestDetails({ test }) {
     }
   }, [reset]);
 
-  const handleShowResult = useCallback(
+  const handleShowresultIdx = useCallback(
     (idx) => {
-      setResult(idx);
-      setIsClicked(!isClicked);
+      setResultIdx(idx);
+      setShowDetail(!showDetail);
     },
-    [isClicked]
+    [showDetail]
   );
 
   const handleRetest = useCallback(() => {
-    setIsClicked(!isClicked);
-  }, [isClicked]);
+    setShowDetail(!showDetail);
+  }, [showDetail]);
 
   const Toast = Swal.mixin({
     toast: true,
@@ -64,7 +64,7 @@ export default function TestDetails({ test }) {
       });
   };
 
-  useEffect(() => {}, [isClicked]);
+  useEffect(() => {}, [showDetail]);
 
   return (
     <Layout handleReset={setReset}>
@@ -80,7 +80,7 @@ export default function TestDetails({ test }) {
             priority={true}
           />
         </div>
-        {!isClicked ? (
+        {!showDetail ? (
           <div className="flex flex-col items-center justify-center">
             <div className="text-xl font-bold text-gray-400 mb-6 text-left max-w-[900px]">
               {test.detail}
@@ -90,7 +90,7 @@ export default function TestDetails({ test }) {
                 <button
                   key={idx}
                   className="bg-purple-300 text-white px-4 py-2 rounded-full mb-4 w-full hover:bg-purple-400"
-                  onClick={() => handleShowResult(idx)}
+                  onClick={() => handleShowresultIdx(idx)}
                 >
                   {el}
                 </button>
@@ -103,7 +103,7 @@ export default function TestDetails({ test }) {
               테스트 결과
             </div>
             <div className="text-xl font-bold text-gray-400 mb-4 text-left max-w-[900px]">
-              {test.answer[result]}
+              {test.answer[resultIdx]}
             </div>
             <div className="flex items-center justify-center">
               <button

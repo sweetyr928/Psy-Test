@@ -4,19 +4,20 @@ import { db } from "../firebaseConfig";
 import { collection, getDocs } from "firebase/firestore";
 import { useState, useEffect } from "react";
 import TopList from "../components/test/topList";
+import { useRecoilValue, useSetRecoilState } from "recoil";
+import { categoryAtom } from "../store/categoryAtom";
 
 export default function Home({ lists, topLists }) {
-  const [category, setCategory] = useState("");
-  const [isClicked, setIsClicked] = useState(false);
   const [reset, setReset] = useState(false);
   const [testList, setTestList] = useState(lists);
+  const category = useRecoilValue(categoryAtom);
+  const setCategory = useSetRecoilState(categoryAtom);
 
   useEffect(() => {
-    if (isClicked) {
+    if (category.length) {
       setTestList(lists.filter((el) => el.category === category));
-      setIsClicked(!isClicked);
     }
-  }, [isClicked]);
+  }, [category]);
 
   useEffect(() => {
     if (reset) {
@@ -27,11 +28,7 @@ export default function Home({ lists, topLists }) {
   }, [reset]);
 
   return (
-    <Layout
-      handleReset={setReset}
-      changeCategory={setCategory}
-      handleClick={setIsClicked}
-    >
+    <Layout handleReset={setReset}>
       {!category.length ? <TopList topLists={topLists} /> : null}
       {testList.length ? (
         <TestList testList={testList} />

@@ -1,11 +1,17 @@
-import { useCallback } from "react";
+import { useSetRecoilState } from "recoil";
+import { categoryAtom } from "../../store/categoryAtom";
+import { useRouter } from "next/router";
 
-export default function NavBar({ changeCategory, handleClick }) {
+export default function NavBar() {
   const category = ["연애", "이상형", "성향", "직업"];
-  const handleCategory = useCallback((idx) => {
-    changeCategory(category[idx]);
-    handleClick(true);
-  }, []);
+  const setCategory = useSetRecoilState(categoryAtom);
+
+  const router = useRouter();
+
+  const handleCategory = (idx) => {
+    setCategory(category[idx]);
+    if (router.pathname !== `/`) router.push(`/`);
+  };
 
   return (
     <nav className="bg-white py-4">
