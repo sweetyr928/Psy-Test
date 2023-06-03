@@ -6,9 +6,11 @@ import { useCallback } from "react";
 
 export default function TestItem({ id, image, title, views }) {
   const router = useRouter();
+
   const handleShowDetails = useCallback(() => {
     router.push(`/${id}`);
   }, [id]);
+
   const updateViews = useCallback(
     async (id) => {
       const testsDoc = doc(db, "testList", id);

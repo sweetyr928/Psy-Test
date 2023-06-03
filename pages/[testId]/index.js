@@ -7,6 +7,7 @@ import ReplayIcon from "@mui/icons-material/Replay";
 import { db } from "../../firebaseConfig";
 import { collection, doc, getDocs, getDoc } from "firebase/firestore";
 import { useRouter } from "next/router";
+import { useRef } from "react";
 
 export default function TestDetails({ test }) {
   const [showDetail, setShowDetail] = useState(false);
@@ -14,6 +15,7 @@ export default function TestDetails({ test }) {
   const [reset, setReset] = useState(false);
 
   const router = useRouter();
+  const ref = useRef(null);
 
   useEffect(() => {
     if (reset) {
@@ -78,7 +80,9 @@ export default function TestDetails({ test }) {
             style={{ width: 700, height: 400 }}
             className="object-cover"
             priority={true}
+            onLoadingComplete={() => ref.current.remove()}
           />
+          <div className="animation" ref={ref} />
         </div>
         {!showDetail ? (
           <div className="flex flex-col items-center justify-center">
