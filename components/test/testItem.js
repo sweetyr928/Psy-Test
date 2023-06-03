@@ -6,9 +6,9 @@ import { useCallback } from "react";
 
 export default function TestItem({ id, image, title, views }) {
   const router = useRouter();
-  const handleShowDetails = () => {
+  const handleShowDetails = useCallback(() => {
     router.push(`/${id}`);
-  };
+  }, [id]);
   const updateViews = useCallback(
     async (id) => {
       const testsDoc = doc(db, "testList", id);
@@ -49,7 +49,7 @@ export default function TestItem({ id, image, title, views }) {
           {title}
         </div>
         <div className="flex justify-center">
-          <button className="bg-purple-300 text-white px-4 py-2 rounded-full">
+          <button className="bg-purple-300 text-white px-4 py-2 rounded-full hover:bg-purple-400">
             테스트 하러가기
           </button>
         </div>
