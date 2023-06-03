@@ -1,9 +1,11 @@
+import { useCallback } from "react";
+
 export default function NavBar({ changeCategory, handleClick }) {
   const category = ["연애", "이상형", "성향", "직업"];
-  const handleCategory = (idx) => {
+  const handleCategory = useCallback((idx) => {
     changeCategory(category[idx]);
     handleClick(true);
-  };
+  }, []);
 
   return (
     <nav className="bg-white py-4">

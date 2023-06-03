@@ -1,7 +1,9 @@
+import { useCallback } from "react";
+
 export default function Header({ handleReset }) {
-  const handleClick = () => {
+  const handleClick = useCallback(() => {
     handleReset(true);
-  };
+  }, []);
 
   return (
     <div

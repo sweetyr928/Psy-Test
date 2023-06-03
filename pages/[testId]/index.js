@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Layout from "../../components/layout/Layout";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import Swal from "sweetalert2";
 import ShareIcon from "@mui/icons-material/Share";
 import ReplayIcon from "@mui/icons-material/Replay";
@@ -22,14 +22,17 @@ export default function TestDetails({ test }) {
     }
   }, [reset]);
 
-  const handleShowResult = (idx) => {
-    setResult(idx);
-    setIsClicked(!isClicked);
-  };
+  const handleShowResult = useCallback(
+    (idx) => {
+      setResult(idx);
+      setIsClicked(!isClicked);
+    },
+    [isClicked]
+  );
 
-  const handleRetest = () => {
+  const handleRetest = useCallback(() => {
     setIsClicked(!isClicked);
-  };
+  }, [isClicked]);
 
   const Toast = Swal.mixin({
     toast: true,
@@ -110,7 +113,7 @@ export default function TestDetails({ test }) {
                 <ShareIcon />
               </button>
               <button
-                className="bg-purple-300 text-white px-4 py-2 rounded-full mb-4 w-full hover:bg-purple-400"
+                className="bg-purple-300 text-white px-4 py-2 rounded-full mb-4 w-full"
                 onClick={handleRetest}
               >
                 <ReplayIcon />
