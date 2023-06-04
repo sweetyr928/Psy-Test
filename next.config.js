@@ -19,6 +19,13 @@ const nextConfig = {
       "economychosun.com",
       "postfiles.pstatic.net",
       "image.utoimage.com",
+      "www.expedia.co.kr",
+      "encrypted-tbn0.gstatic.com",
+      "thumb.mt.co.kr",
+      "cnts-image.godpeople.com",
+      "www.urbanbrush.net",
+      "pionix3.cafe24.com",
+      "image.utoimage.com",
     ],
   },
 };
