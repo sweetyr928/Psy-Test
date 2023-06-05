@@ -26,6 +26,12 @@ const nextConfig = {
       "www.urbanbrush.net",
       "pionix3.cafe24.com",
       "image.utoimage.com",
+      "media.istockphoto.com",
+      "previews.123rf.com",
+      "png.pngtree.com",
+      "img.etoday.co.kr",
+      "img1.daumcdn.net",
+      "dthezntil550i.cloudfront.net",
     ],
   },
 };
