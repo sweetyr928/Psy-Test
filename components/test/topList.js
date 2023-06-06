@@ -30,7 +30,7 @@ export default function TopList({ topLists }) {
               >
                 {`${idx + 1}`}
               </div>
-              <div className="text-lg font-semibold text-gray-500 hover:text-gray-600">
+              <div className="text-lg font-semibold text-gray-500 hover:text-gray-600 transition-colors duration-300">
                 {el.title}
               </div>
             </div>

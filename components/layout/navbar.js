@@ -19,7 +19,7 @@ export default function NavBar() {
         <div className="flex justify-around">
           {category.map((el, idx) => (
             <button
-              className="text-purple-300 hover:text-purple-400 px-3 py-2 rounded-md font-medium"
+              className="text-purple-300 hover:text-purple-400 px-3 py-2 rounded-md font-medium hover:font-bold transition-colors duration-300"
               key={idx}
               onClick={() => handleCategory(idx)}
             >
