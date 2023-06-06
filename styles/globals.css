@@ -47,3 +47,21 @@
     padding: 0 16px;
   }
 }
+
+@font-face {
+  font-family: "NanumSquareRound";
+  font-weight: 300;
+  font-style: normal;
+  src: url("/fonts/NanumSquareRoundR.ttf") format("ttf");
+}
+
+@font-face {
+  font-family: "NanumSquareRound";
+  font-weight: 700;
+  font-style: normal;
+  src: url("/fonts/NanumSquareRoundB.ttf") format("ttf");
+}
+
+body {
+  font-family: "NanumSquareRound";
+}
