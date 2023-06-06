@@ -85,7 +85,7 @@ export default function TestDetails({ test }) {
           <div className="animation" ref={ref} />
         </div>
         {!showDetail ? (
-          <div className="flex flex-col items-center justify-center">
+          <div className="flex flex-col items-center justify-center mobile-width">
             <div className="text-xl font-bold text-gray-400 mb-6 text-left max-w-[900px]">
               {test.detail}
             </div>
@@ -102,7 +102,7 @@ export default function TestDetails({ test }) {
             </div>
           </div>
         ) : (
-          <div className="flex flex-col items-center justify-center">
+          <div className="flex flex-col items-center justify-center mobile-width">
             <div className="text-2xl font-bold text-gray-500 mb-4">
               테스트 결과
             </div>

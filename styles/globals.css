@@ -41,3 +41,9 @@
     transform: rotate(360deg);
   }
 }
+
+@media (max-width: 640px) {
+  .mobile-width {
+    padding: 0 16px;
+  }
+}
