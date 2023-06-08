@@ -8,7 +8,7 @@ export default function TopList({ topLists }) {
   }, []);
 
   return (
-    <div className="mobile-width container mx-auto ">
+    <div className="mobile-width container mx-auto">
       <div className="border-2 border-purple-300 p-4 rounded-lg mb-4">
         <div className="text-2xl font-bold mb-4 text-gray-600 cursor-default">
           인기 테스트 TOP 3
@@ -24,13 +24,7 @@ export default function TopList({ topLists }) {
             onClick={() => handleClick(el.id)}
           >
             <div className="flex items-center">
-              <div
-                className="flex items-center justify-center rounded-full bg-purple-300 text-white text-lg font-semibold mr-2 hover:bg-purple-400"
-                style={{
-                  width: `${el.title.length * 10 + 20}px`,
-                  height: `${el.title.length * 10 + 20}px`,
-                }}
-              >
+              <div className="flex-shrink-0 rounded-full bg-purple-300 text-white text-lg font-semibold mr-2 hover:bg-purple-400">
                 {`${idx + 1}`}
               </div>
               <div className="text-lg font-semibold text-gray-500 hover:text-gray-600 transition-colors duration-300">
