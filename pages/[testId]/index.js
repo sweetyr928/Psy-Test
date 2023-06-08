@@ -72,16 +72,18 @@ export default function TestDetails({ test }) {
     <Layout handleReset={setReset}>
       <div className="flex flex-col items-center justify-center sm:mt-2 md:mt-4">
         <div className="mb-6 relative">
-          <Image
-            src={test.image}
-            alt={test.title}
-            width={700}
-            height={400}
-            style={{ width: 700, height: 400 }}
-            className="object-cover"
-            priority={true}
-            onLoadingComplete={() => ref.current.remove()}
-          />
+          {test.image && (
+            <Image
+              src={test.image}
+              alt={test.title}
+              width={700}
+              height={400}
+              style={{ width: 700, height: 400 }}
+              className="object-cover"
+              priority={true}
+              onLoadingComplete={() => ref.current.remove()}
+            />
+          )}
           <div className="animation" ref={ref} />
         </div>
         {!showDetail ? (
