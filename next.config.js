@@ -34,6 +34,9 @@ const nextConfig = {
       "dthezntil550i.cloudfront.net",
     ],
   },
+  experimental: {
+    appDir: false,
+  },
 };
 
 module.exports = nextConfig;

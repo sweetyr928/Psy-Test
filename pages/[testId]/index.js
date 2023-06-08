@@ -136,7 +136,7 @@ export async function getStaticPaths() {
   const listsCollectionRef = collection(db, "testList");
   const data = await getDocs(listsCollectionRef);
   return {
-    fallback: true,
+    fallback: false,
     paths: data.docs.map((doc) => ({
       params: { testId: doc.id },
     })),
