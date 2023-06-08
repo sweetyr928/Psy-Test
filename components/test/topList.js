@@ -24,7 +24,7 @@ export default function TopList({ topLists }) {
             onClick={() => handleClick(el.id)}
           >
             <div className="flex items-center">
-              <div className="flex-shrink-0 flex items-center justify-center rounded-full bg-purple-300 text-white text-lg font-semibold mr-2 hover:bg-purple-400 w-6 h-6">
+              <div className="flex-shrink-0 circle flex items-center justify-center rounded-full bg-purple-300 text-white text-lg font-semibold mr-2 hover:bg-purple-400 w-6 h-6">
                 {`${idx + 1}`}
               </div>
               <div className="text-lg font-semibold text-gray-500 hover:text-gray-600 transition-colors duration-300">

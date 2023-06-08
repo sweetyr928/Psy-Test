@@ -65,3 +65,10 @@
 body {
   font-family: "NanumSquareRound";
 }
+
+.circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
