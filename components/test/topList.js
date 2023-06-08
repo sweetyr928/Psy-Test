@@ -25,8 +25,11 @@ export default function TopList({ topLists }) {
           >
             <div className="flex items-center">
               <div
-                className="flex items-center justify-center w-6 h-6 
-          rounded-full bg-purple-300 text-white text-lg font-semibold mr-2 hover:bg-purple-400"
+                className="flex items-center justify-center rounded-full bg-purple-300 text-white text-lg font-semibold mr-2 hover:bg-purple-400"
+                style={{
+                  width: `${el.title.length * 10 + 20}px`,
+                  height: `${el.title.length * 10 + 20}px`,
+                }}
               >
                 {`${idx + 1}`}
               </div>
