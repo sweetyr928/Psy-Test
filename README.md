@@ -29,6 +29,12 @@
 <img width=550 src="https://github.com/sweetyr928/Psy-Test/assets/39157466/082cb538-852a-45f9-9766-f7b203257ba8.gif"><br/>
 </details>
 
+<details>
+<summary>반응형(모바일)</summary><br/>
+👉 모바일 환경 반응성 추가<br/>
+<img width=750 height=600 src="https://github.com/sweetyr928/Psy-Test/assets/39157466/6bf65821-8b22-4ed6-b2db-c038271e5c1e.gif"><br/>
+</details>
+
 ## 👩🏻‍🔧 **기술 스택**
 
 ### **Front-end**
