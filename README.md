@@ -38,11 +38,11 @@
 ### **Front-end**
 
 <div align=left>
+<img src="https://img.shields.io/badge/Next.js-000000?style=for-the-badge&amp;logo=Next.js&amp;logoColor=black" height="35"> 
 <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&amp;logo=html5&amp;logoColor=white" height="35"> 
 <img src="https://img.shields.io/badge/Javascript-F7DF1E?style=for-the-badge&amp;logo=javascript&amp;logoColor=white" height="35"> 
 <img src="https://img.shields.io/badge/Tailwindcss-06B6D4?style=for-the-badge&amp;logo=tailwindcss&amp;logoColor=white" height="35">
 <img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&amp;logo=react&amp;logoColor=black" height="35"> 
-<img src="https://img.shields.io/badge/Next.js-000000?style=for-the-badge&amp;logo=Next.js&amp;logoColor=black" height="35"> 
 <img src="https://img.shields.io/badge/Recoil-3578EC?style=for-the-badge&amp;logo=recoil&amp;logoColor=white" height="35">
 </div>
 
