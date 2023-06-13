@@ -15,10 +15,8 @@
 <summary>메인 페이지</summary><br/>
 👉 심리 테스트 리스트 전체<br/>
 <img width=550 src="https://github.com/sweetyr928/Psy-Test/assets/39157466/000ccbe5-b16e-4a6c-b4a4-ac647a288fe9.gif"><br/>
-  
 👉 조회수 TOP 3 심리 테스트<br/>
 <img width=550 src="https://github.com/sweetyr928/Psy-Test/assets/39157466/dd719b34-c851-42e3-a778-5d1e2a789b07.gif"><br/>
-  
 👉 카테고리 별 심리 테스트 리스트<br/>
 <img width=550 src="https://github.com/sweetyr928/Psy-Test/assets/39157466/52c8d9c9-b08b-4879-b3f9-5ee059e115d3.gif"><br/>
 </details>
