@@ -1,6 +1,7 @@
 import { useSetRecoilState } from "recoil";
 import { categoryAtom } from "../../store/categoryAtom";
 import { useRouter } from "next/router";
+import { useCallback } from "react";
 
 export default function NavBar() {
   const category = ["연애", "이상형", "성향", "직업"];
@@ -10,8 +11,22 @@ export default function NavBar() {
 
   const handleCategory = (idx: number) => {
     setCategory(category[idx]);
-    if (router.pathname !== `/`) router.push(`/`);
+    if (router.pathname !== `/`) {
+      router.push(`/`);
+      scrollToTop();
+    }
   };
+
+  const scrollToTop = useCallback(() => {
+    setTimeout(() => {
+      if (typeof window !== "undefined") {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth",
+        });
+      }
+    }, 0);
+  }, []);
 
   return (
     <nav className="bg-white py-4 sticky top-0">
