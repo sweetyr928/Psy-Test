@@ -6,16 +6,22 @@ import { useState, useEffect } from "react";
 import TopList from "../components/test/topList";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import { categoryAtom } from "../store/categoryAtom";
+import { Test } from "../type/interface";
 
-export default function Home({ lists, topLists }) {
-  const [reset, setReset] = useState(false);
-  const [testList, setTestList] = useState(lists);
-  const category = useRecoilValue(categoryAtom);
-  const setCategory = useSetRecoilState(categoryAtom);
+interface HomeProps {
+  lists: Test[];
+  topLists: Test[];
+}
+
+export default function Home({ lists, topLists }: HomeProps): JSX.Element {
+  const [reset, setReset] = useState<boolean>(false);
+  const [testList, setTestList] = useState<Test[]>(lists);
+  const category = useRecoilValue<string>(categoryAtom);
+  const setCategory = useSetRecoilState<string>(categoryAtom);
 
   useEffect(() => {
     if (category.length) {
-      setTestList(lists.filter((el) => el.category === category));
+      setTestList(lists.filter((el: Test) => el.category === category));
     }
   }, [category]);
 
@@ -43,16 +49,16 @@ export default function Home({ lists, topLists }) {
   );
 }
 
-export async function getStaticProps() {
+export async function getStaticProps(): Promise<{ props: HomeProps }> {
   const listsCollectionRef = collection(db, "testList");
   const data = await getDocs(listsCollectionRef);
-  const lists = data.docs
-    .map((doc) => ({ ...doc.data(), id: doc.id }))
-    .sort((a, b) => b.id - a.id);
-  const topLists = data.docs
-    .map((doc) => ({ ...doc.data(), id: doc.id }))
-    .sort((a, b) => b.id - a.id)
-    .sort((a, b) => b.views - a.views)
+  const lists: Test[] = data.docs
+    .map((doc) => ({ ...doc.data(), id: doc.id } as Test))
+    .sort((a, b) => +b.id - +a.id);
+  const topLists: Test[] = data.docs
+    .map((doc) => ({ ...doc.data(), id: doc.id } as Test))
+    .sort((a, b) => +b.id - +a.id)
+    .sort((a, b) => +b.views - +a.views)
     .slice(0, 3);
 
   return {

@@ -4,15 +4,22 @@ import { db } from "../../firebaseConfig";
 import { doc, updateDoc } from "firebase/firestore";
 import { useCallback } from "react";
 
-export default function TestItem({ id, image, title, views }) {
+interface TestItemProps {
+  id: string;
+  image: string;
+  title: string;
+  views: number;
+}
+
+export default function TestItem({ id, image, title, views }: TestItemProps) {
   const router = useRouter();
 
   const handleShowDetails = useCallback(() => {
     router.push(`/${id}`);
-  }, [id]);
+  }, [id, router]);
 
   const updateViews = useCallback(
-    async (id) => {
+    async (id: string) => {
       const testsDoc = doc(db, "testList", id);
       const newField = { views: views + 1 };
       await updateDoc(testsDoc, newField);

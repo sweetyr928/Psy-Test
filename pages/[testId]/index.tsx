@@ -1,40 +1,42 @@
 import Image from "next/image";
 import Layout from "../../components/layout/Layout";
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState, useCallback, useRef } from "react";
 import Swal from "sweetalert2";
 import ShareIcon from "@mui/icons-material/Share";
 import ReplayIcon from "@mui/icons-material/Replay";
 import { db } from "../../firebaseConfig";
 import { collection, doc, getDocs, getDoc } from "firebase/firestore";
 import { useRouter } from "next/router";
-import { useRef } from "react";
+import { GetStaticProps, GetStaticPaths } from "next";
+import { Test } from "../../type/interface";
 
-export default function TestDetails({ test }) {
-  const [showDetail, setShowDetail] = useState(false);
-  const [resultIdx, setResultIdx] = useState(0);
-  const [reset, setReset] = useState(false);
+interface TestDetailsProps {
+  test: Test;
+}
+
+export default function TestDetails({ test }: TestDetailsProps): JSX.Element {
+  const [showDetail, setShowDetail] = useState<boolean>(false);
+  const [resultIdx, setResultIdx] = useState<number>(0);
+  const [reset, setReset] = useState<boolean>(false);
 
   const router = useRouter();
-  const ref = useRef(null);
+  const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (reset) {
       router.push(`/`);
       setReset(false);
     }
-  }, [reset]);
+  }, [reset, router]);
 
-  const handleShowresultIdx = useCallback(
-    (idx) => {
-      setResultIdx(idx);
-      setShowDetail(!showDetail);
-    },
-    [showDetail]
-  );
+  const handleShowresultIdx = useCallback((idx: number) => {
+    setResultIdx(idx);
+    setShowDetail((prevShowDetail) => !prevShowDetail);
+  }, []);
 
   const handleRetest = useCallback(() => {
-    setShowDetail(!showDetail);
-  }, [showDetail]);
+    setShowDetail((prevShowDetail) => !prevShowDetail);
+  }, []);
 
   const Toast = Swal.mixin({
     toast: true,
@@ -49,7 +51,7 @@ export default function TestDetails({ test }) {
   });
 
   const handleCopyURL = () => {
-    const currentURL = window.location.href;
+    const currentURL: string = window.location.href;
     navigator.clipboard
       .writeText(currentURL)
       .then(() => {
@@ -58,9 +60,9 @@ export default function TestDetails({ test }) {
           title: "URL이 클립보드에 복사되었습니다!",
         });
       })
-      .catch((error) => {
-        Toast.fire({
-          icon: "fail",
+      .catch(() => {
+        Swal.fire({
+          icon: "error",
           title: "URL 복사를 실패하였습니다!",
         });
       });
@@ -81,7 +83,7 @@ export default function TestDetails({ test }) {
               style={{ width: 700, height: 400 }}
               className="object-cover"
               priority={true}
-              onLoadingComplete={() => ref.current.remove()}
+              onLoadingComplete={() => ref.current?.remove()}
             />
           )}
           <div className="animation" ref={ref} />
@@ -92,7 +94,7 @@ export default function TestDetails({ test }) {
               {test.detail}
             </div>
             <div className="flex flex-col items-center justify-center">
-              {test.option.map((el, idx) => (
+              {test.option.map((el: string, idx: number) => (
                 <button
                   key={idx}
                   className="bg-purple-300 text-white px-4 py-2 rounded-full mb-4 w-full hover:bg-purple-400"
@@ -132,7 +134,7 @@ export default function TestDetails({ test }) {
   );
 }
 
-export async function getStaticPaths() {
+export const getStaticPaths: GetStaticPaths = async () => {
   const listsCollectionRef = collection(db, "testList");
   const data = await getDocs(listsCollectionRef);
   return {
@@ -141,17 +143,30 @@ export async function getStaticPaths() {
       params: { testId: doc.id },
     })),
   };
-}
+};
 
-export async function getStaticProps(context) {
-  const testId = context.params.testId;
+export const getStaticProps: GetStaticProps<TestDetailsProps> = async (
+  context
+) => {
+  const testId = context.params?.testId as string;
+  if (!testId) {
+    return {
+      notFound: true,
+    };
+  }
   const docRef = doc(db, "testList", testId);
   const dataSnapshot = await getDoc(docRef);
-  const testDetail = dataSnapshot.data();
+  const testDetail = dataSnapshot.data() as Test;
+
+  if (!testDetail) {
+    return {
+      notFound: true,
+    };
+  }
 
   return {
     props: {
       test: testDetail,
     },
   };
-}
+};

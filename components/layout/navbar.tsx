@@ -8,13 +8,13 @@ export default function NavBar() {
 
   const router = useRouter();
 
-  const handleCategory = (idx) => {
+  const handleCategory = (idx: number) => {
     setCategory(category[idx]);
     if (router.pathname !== `/`) router.push(`/`);
   };
 
   return (
-    <nav className="bg-white py-4">
+    <nav className="bg-white py-4 sticky top-0">
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex justify-around">
           {category.map((el, idx) => (

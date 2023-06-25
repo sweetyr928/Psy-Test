@@ -1,11 +1,21 @@
 import { useRouter } from "next/router";
 import { useCallback } from "react";
+import { Test } from "../../type/interface";
+import { TemplateString } from "next/dist/lib/metadata/types/metadata-types";
 
-export default function TopList({ topLists }) {
+interface TopListProps {
+  topLists: Test[];
+}
+
+export default function TopList({ topLists }: TopListProps): JSX.Element {
   const router = useRouter();
-  const handleClick = useCallback((id) => {
-    router.push(`/${id}`);
-  }, []);
+
+  const handleClick = useCallback(
+    (id: string) => {
+      router.push(`/${id}`);
+    },
+    [router]
+  );
 
   return (
     <div className="mobile-width container mx-auto">
@@ -13,7 +23,7 @@ export default function TopList({ topLists }) {
         <div className="text-2xl font-bold mb-4 text-gray-600 cursor-default">
           인기 테스트 TOP 3
         </div>
-        {topLists.map((el, idx) => (
+        {topLists.map((el: Test, idx: number) => (
           <div
             key={el.id}
             className={`${

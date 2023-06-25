@@ -1,7 +1,7 @@
 import { useEffect, useState, useCallback } from "react";
 
 export default function Header({ handleReset }) {
-  const [fontSize, setFontSize] = useState(37);
+  const [fontSize, setFontSize] = useState<number>(37);
 
   useEffect(() => {
     const handleResize = () => {
@@ -26,7 +26,7 @@ export default function Header({ handleReset }) {
   return (
     <div
       className="h-24 w-screen flex justify-center items-center cursor-pointer 
-    bg-gradient-to-r from-purple-300 via-purple-400 to-purple-300"
+    bg-gradient-to-r from-purple-300 via-purple-400 to-purple-300 sticky top-0"
       onClick={handleClick}
       style={{ fontSize: `${fontSize}px` }}
     >
