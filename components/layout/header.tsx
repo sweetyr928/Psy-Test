@@ -1,6 +1,11 @@
 import { useEffect, useState, useCallback } from "react";
+import { Dispatch, SetStateAction } from "react";
 
-export default function Header({ handleReset }) {
+interface HeaderProps {
+  handleReset: Dispatch<SetStateAction<boolean>>;
+}
+
+export default function Header({ handleReset }: HeaderProps): JSX.Element {
   const [fontSize, setFontSize] = useState<number>(37);
 
   useEffect(() => {
