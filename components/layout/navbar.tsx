@@ -32,7 +32,7 @@ export default function NavBar() {
     <nav className="bg-white py-4 sticky top-0">
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex justify-around">
-          {category.map((el, idx) => (
+          {category.map((el: string, idx: number) => (
             <button
               className="text-purple-300 hover:text-purple-400 px-3 py-2 rounded-md font-medium hover:font-bold transition-colors duration-300"
               key={idx}
