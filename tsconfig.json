@@ -2,14 +2,10 @@
   "compilerOptions": {
     "target": "es5",
     "module": "commonjs",
-    "noImplicitAny": false,
+    "noImplicitAny": true,
     "strictNullChecks": false,
-    "jsx": "preserve" ,
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "jsx": "preserve",
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": false,
@@ -21,10 +17,6 @@
     "resolveJsonModule": true,
     "isolatedModules": true
   },
-  "include": [
-    "./**/*"
-  ],
-  "exclude": [
-    "node_modules"
-  ]
+  "include": ["./**/*"],
+  "exclude": ["node_modules"]
 }
