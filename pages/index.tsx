@@ -35,7 +35,7 @@ export default function Home({ lists, topLists }: HomeProps): JSX.Element {
 
   return (
     <Layout handleReset={setReset}>
-      {!category.length ? <TopList topLists={topLists} /> : null}
+      <TopList topLists={topLists} />
       {testList.length ? (
         <TestList testList={testList} />
       ) : (

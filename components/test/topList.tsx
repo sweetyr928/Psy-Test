@@ -1,7 +1,8 @@
 import { useRouter } from "next/router";
 import { useCallback } from "react";
 import { Test } from "../../type/interface";
-import { TemplateString } from "next/dist/lib/metadata/types/metadata-types";
+import { useRecoilValue } from "recoil";
+import { categoryAtom } from "../../store/categoryAtom";
 
 interface TopListProps {
   topLists: Test[];
@@ -9,6 +10,7 @@ interface TopListProps {
 
 export default function TopList({ topLists }: TopListProps): JSX.Element {
   const router = useRouter();
+  const category = useRecoilValue<string>(categoryAtom);
 
   const handleClick = useCallback(
     (id: string) => {
@@ -21,7 +23,7 @@ export default function TopList({ topLists }: TopListProps): JSX.Element {
     <div className="mobile-width container mx-auto">
       <div className="border-2 border-purple-300 p-4 rounded-lg mb-4">
         <div className="text-2xl font-bold mb-4 text-gray-600 cursor-default">
-          인기 테스트 TOP 3
+          {`${category.length > 0 ? category : "전체"} 인기 테스트 TOP 3`}
         </div>
         {topLists.map((el: Test, idx: number) => (
           <div
