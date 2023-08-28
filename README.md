@@ -6,7 +6,7 @@
 2. 심심할 때, 시간 때울 때, 아이스 브레이킹이 필요할 때 가볍게 즐기기
 3. 가족, 친구, 연인과 테스트를 공유하며 추억 쌓기
 
-### [👩‍💻 블로깅](https://bbeeyaks-moment.tistory.com/category/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/%EC%98%A4%EC%8B%AC%ED%85%8C%28%EC%98%A4%EB%8A%98%EC%9D%98%20%EC%8B%AC%EB%A6%AC%ED%85%8C%EC%8A%A4%ED%8A%B8%29)
+## [👩‍💻 블로깅](https://bbeeyaks-moment.tistory.com/category/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/%EC%98%A4%EC%8B%AC%ED%85%8C%28%EC%98%A4%EB%8A%98%EC%9D%98%20%EC%8B%AC%EB%A6%AC%ED%85%8C%EC%8A%A4%ED%8A%B8%29)
 
 ## 📅 **프로젝트 기간**
 
